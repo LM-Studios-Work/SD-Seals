@@ -1,7 +1,7 @@
 export const siteContact = {
   phone: "01527 509620",
   phoneHref: "tel:01527509620",
-  email: "sales@sdseals.co.uk",
+  email: "sales@sdseals.co.za",
 }
 
 export const primaryLinks = [
@@ -22,7 +22,7 @@ export const productCategories = [
 ] as const
 
 export const serviceBenefits = [
-  "Free tracked shipping on all orders over £50",
+  "Free tracked shipping on all orders over R500",
   "Premium & budget product ranges",
   "Bespoke solutions",
   "ISO 9001: 2015 certified",

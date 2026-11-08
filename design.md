@@ -2,7 +2,7 @@
 
 ## Direction
 
-SD Seals is an industrial catalogue and supply site. The visual language is precise, practical, and service-led: strong horizontal bands, compact spacing, high-contrast type, minimal rounding, and clear product navigation. The supplied SD Seals and Bearings logo is the visual reference for the brand.
+SD Seals is an industrial catalogue and supply site. The visual language is precise, practical, and service-led: strong horizontal bands, compact spacing, high-contrast type, minimal rounding, and clear product navigation. The supplied SD Seals and Bearings logo is the visual reference for the brand. The site serves South Africa: use `sdseals.co.za`, `sales@sdseals.co.za`, and `R` prices.
 
 ## Brand palette
 
@@ -56,7 +56,7 @@ Use a 1180px maximum content width, 40px total desktop gutters, and 20px mobile 
 
 ## Component rules
 
-Buttons are uppercase, heavy italic, and compact. Primary actions use gold with navy text; dark actions use navy or graphite. Navigation and service messaging use full-width bars. Keep cards and rounded UI to a minimum: this is an industrial catalogue aesthetic rather than a SaaS dashboard.
+Buttons are uppercase, heavy italic, and compact. Hero enquiry actions use graphite with white text and shift to gold with navy text on hover; CTA enquiry actions use gold and shift to pale gold on hover. Every button link must have a visible hover, focus, and keyboard state. Navigation and service messaging use full-width bars. Keep cards and rounded UI to a minimum: this is an industrial catalogue aesthetic rather than a SaaS dashboard.
 
 ## Accessibility
 

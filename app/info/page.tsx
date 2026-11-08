@@ -1,0 +1,1 @@
+export default function InfoPage() { return <main className="placeholder-page"><div className="container"><p className="eyebrow">SD Seals</p><h1>Info</h1><p>This page is ready for product information, resources and technical guidance.</p></div></main> }

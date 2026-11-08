@@ -13,7 +13,6 @@ export default function ContactPage() {
   }
 
   return <main className="contact-page">
-    <section className="contact-hero"><div className="container"><p className="eyebrow">SD Seals & Bearings</p><h1>Let&apos;s keep<br /><em>things moving.</em></h1><p>Tell us what you need and our experienced team will get back to you.</p></div></section>
     <section className="contact-content"><div className="container contact-grid">
       <div className="contact-form-wrap"><p className="eyebrow">Make an enquiry</p><h2>How can we help?</h2><p className="contact-intro">Send us a message using the form below and one of our team will be in touch.</p>
         <form className="contact-form" onSubmit={handleSubmit}>

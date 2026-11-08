@@ -28,7 +28,7 @@ text-transform: uppercase;
 letter-spacing: 0.05em;
 ```
 
-Body copy uses regular Montserrat with comfortable line height. Avoid playful, rounded, or decorative display styles.
+Body copy uses regular Montserrat with comfortable line height. Avoid playful, rounded, or decorative display styles. Section headings use the same heavy italic uppercase treatment and include a short 4px underline accent; use navy on light surfaces, gold on navy surfaces, and keep the accent aligned to the heading.
 
 ## Current page structure
 
@@ -52,7 +52,7 @@ The home/about route currently contains: image-led hero, about introduction, fea
 
 ## Layout rules
 
-Use a 1180px maximum content width, 40px total desktop gutters, and 20px mobile gutters. Use flexbox for navigation and footer rows, and grid for two- and three-column content sections. Keep vertical spacing compact and intentional: approximately 42px hero padding, 55–72px content sections, and 62px CTA padding.
+Use a 1180px maximum content width, 40px total desktop gutters, and 20px mobile gutters. On mobile, the header uses the SD Seals logo, an unrotated phone-call icon, basket, menu toggle, and full-width search in that order. Use flexbox for navigation and footer rows, and grid for two- and three-column content sections. Keep vertical spacing compact and intentional: approximately 42px hero padding, 55–72px content sections, and 62px CTA padding.
 
 ## Component rules
 

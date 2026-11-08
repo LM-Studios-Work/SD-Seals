@@ -1,0 +1,1 @@
+export default function ContactPage() { return <main className="placeholder-page"><div className="container"><p className="eyebrow">SD Seals</p><h1>Contact us</h1><p>This page is ready for your contact form and enquiry details.</p></div></main> }

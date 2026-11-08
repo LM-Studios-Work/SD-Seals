@@ -1,55 +1,63 @@
 # SD Seals Design System
 
-## Visual reference
+## Direction
 
-The site follows the supplied industrial bearing-company screenshots while taking its colour direction directly from the SD Seals logo: compact dark utility header, centered search masthead, full-width gold category bar, charcoal benefits strip, shallow image-led hero, white content sections, gold enquiry band, supplier strip, and charcoal footer.
+SD Seals is an industrial catalogue and supply site. The visual language is precise, practical, and service-led: strong horizontal bands, compact spacing, high-contrast type, minimal rounding, and clear product navigation. The supplied SD Seals and Bearings logo is the visual reference for the brand. The site serves South Africa: use `sdseals.co.za`, `sales@sdseals.co.za`, and `R` prices.
 
 ## Brand palette
 
-- Midnight navy `#061A32` — logo blue, hero overlays, deep contrast
-- Engineering blue `#0C3765` — supporting surfaces
-- Deep logo navy `#071B35` — primary brand surface, hero overlays, footer
-- Royal bearing blue `#0E3D73` — supporting surfaces and navigation depth
-- Logo gold `#D7AA3F` — navigation, buttons, highlights, and fine rules
-- Pale gold `#F4D98A` — focus states and soft highlights
-- Machined silver `#C8CDD2` — borders, logo contrast, and secondary text
-- Graphite `#252B33` — header/footer surfaces
-- White `#FFFFFF` — content and reversed type
+- Primary navy `#012858` — site header, category navigation, CTA band, hero depth, and primary brand surfaces
+- Gold `#DFB843` — search actions, borders, indicators, highlights, and focus details
+- Pale gold `#F4D98A` — hover states and accessible focus rings
+- Graphite `#252B33` — body text and footer/service surfaces
+- Silver `#C8CDD2` — borders and secondary contrast
+- Mist `#F2F4F7` — light supporting backgrounds
+- White `#FFFFFF` — content surfaces and reversed type
+
+Keep the palette blue-led. Gold is an accent, not a replacement for the primary navy. Preserve the existing greys unless a contrast issue requires a change.
 
 ## Typography
 
-Load Montserrat. All headings, navigation, buttons, eyebrows, and primary labels use the industrial display treatment:
+Use Montserrat from `app/globals.css`. Headings, navigation, buttons, eyebrows, and primary labels use a heavy italic industrial treatment:
 
 ```css
-font-family: 'Montserrat', 'Futura', 'Eurostile', sans-serif;
+font-family: Montserrat, Arial, sans-serif;
 font-weight: 800; /* or 900 */
 font-style: italic;
 text-transform: uppercase;
 letter-spacing: 0.05em;
 ```
 
-Body copy stays Montserrat italic or regular at a comfortable reading size. Avoid rounded, playful, or soft display styles.
+Body copy uses regular Montserrat with comfortable line height. Avoid playful, rounded, or decorative display styles.
 
-## Page structure
+## Current page structure
 
-1. Utility links and contact details
-2. Masthead with logo, search, and basket
-3. Orange product category navigation
-4. Charcoal service-benefits bar
-5. Image-backed page hero
-6. White content sections with a two-column desktop grid
-7. Orange centred enquiry CTA
-8. Light supplier/trust strip
-9. Charcoal footer with logo, service links, and contact details
+The shared shell is rendered by `app/layout.tsx`:
+
+1. `components/site-header.tsx` — utility links, logo masthead, search, basket, mobile menu, product navigation, and benefits bar
+2. Route content — `app/page.tsx`, `app/contact-us/page.tsx`, and `app/info/page.tsx`
+3. `components/site-footer.tsx` — service links, contact details, company statement, and legal footer
+
+The home/about route currently contains: image-led hero, about introduction, feature strip, three-value grid, navy enquiry CTA, and supplier/trust strip.
+
+## File structure and consistency
+
+- Route-specific UI belongs in `app/<route>/page.tsx`.
+- Shared site chrome belongs in `components/` and is imported by `app/layout.tsx`.
+- Shared navigation, contact, category, and benefit data belongs in `lib/site-data.ts`; do not duplicate these strings across components.
+- Global tokens, typography, layout utilities, and reusable visual classes belong in `app/globals.css`.
+- Keep content and layout separate from global styling. Add a component when a section becomes reusable or has its own interaction/state.
+- Use `@/` imports for project-local modules.
+- Keep browser state in the smallest interactive component; do not make route pages client components unless required.
 
 ## Layout rules
 
-Use a 1180px maximum content width, 32px desktop gutters, and 20px mobile gutters. Keep vertical spacing compact and intentional: 42px hero padding, 55–72px content sections, and 62px CTA padding. Use flexbox for navigation and footer rows; use grid for two- and three-column content sections.
+Use a 1180px maximum content width, 40px total desktop gutters, and 20px mobile gutters. Use flexbox for navigation and footer rows, and grid for two- and three-column content sections. Keep vertical spacing compact and intentional: approximately 42px hero padding, 55–72px content sections, and 62px CTA padding.
 
 ## Component rules
 
-Buttons are uppercase, heavy italic, and compact. Primary actions use logo gold with deep navy text; dark actions use graphite or navy. Use full-width bars for navigation and service messaging. Keep cards and rounded UI to a minimum: this is an industrial catalogue aesthetic rather than a SaaS dashboard.
+Buttons are uppercase, heavy italic, and compact. Hero enquiry actions use graphite with white text and shift to gold with navy text on hover; CTA enquiry actions use gold and shift to pale gold on hover. Every button link must have a visible hover, focus, and keyboard state. Navigation and service messaging use full-width bars. Keep cards and rounded UI to a minimum: this is an industrial catalogue aesthetic rather than a SaaS dashboard.
 
 ## Accessibility
 
-Use semantic landmarks, labelled search, visible keyboard focus rings, descriptive logo alt text, adequate contrast, and a collapsed mobile navigation with `aria-expanded`.
+Use semantic landmarks, labelled search controls, descriptive logo alt text, visible keyboard focus rings, sufficient color contrast, and a mobile navigation button with `aria-expanded`. Preserve keyboard access for every interactive element and avoid text-only color cues.

@@ -2,16 +2,18 @@
 
 ## Visual reference
 
-The site follows the supplied industrial bearing-company screenshots: compact dark utility header, centered search masthead, full-width orange category bar, charcoal benefits strip, shallow image-led hero, white content sections, orange enquiry band, supplier strip, and charcoal footer.
+The site follows the supplied industrial bearing-company screenshots while taking its colour direction directly from the SD Seals logo: compact dark utility header, centered search masthead, full-width gold category bar, charcoal benefits strip, shallow image-led hero, white content sections, gold enquiry band, supplier strip, and charcoal footer.
 
 ## Brand palette
 
 - Midnight navy `#061A32` — logo blue, hero overlays, deep contrast
 - Engineering blue `#0C3765` — supporting surfaces
-- Signal orange `#F27C00` — navigation, buttons, section accents
-- Gold `#D5A63A` — logo highlight and fine rules
-- Machined silver `#C8CDD2` — borders and secondary text
-- Charcoal `#363636` — header/footer surfaces
+- Deep logo navy `#071B35` — primary brand surface, hero overlays, footer
+- Royal bearing blue `#0E3D73` — supporting surfaces and navigation depth
+- Logo gold `#D7AA3F` — navigation, buttons, highlights, and fine rules
+- Pale gold `#F4D98A` — focus states and soft highlights
+- Machined silver `#C8CDD2` — borders, logo contrast, and secondary text
+- Graphite `#252B33` — header/footer surfaces
 - White `#FFFFFF` — content and reversed type
 
 ## Typography
@@ -46,7 +48,7 @@ Use a 1180px maximum content width, 32px desktop gutters, and 20px mobile gutter
 
 ## Component rules
 
-Buttons are uppercase, heavy italic, and compact. Primary actions use signal orange with white text; dark actions use charcoal. Use full-width bars for navigation and service messaging. Keep cards and rounded UI to a minimum: this is an industrial catalogue aesthetic rather than a SaaS dashboard.
+Buttons are uppercase, heavy italic, and compact. Primary actions use logo gold with deep navy text; dark actions use graphite or navy. Use full-width bars for navigation and service messaging. Keep cards and rounded UI to a minimum: this is an industrial catalogue aesthetic rather than a SaaS dashboard.
 
 ## Accessibility
 

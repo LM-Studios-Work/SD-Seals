@@ -1,63 +1,84 @@
 # SD Seals Design System
 
-## Direction
+## Purpose and visual direction
 
-SD Seals is an industrial catalogue and supply site. The visual language is precise, practical, and service-led: strong horizontal bands, compact spacing, high-contrast type, minimal rounding, and clear product navigation. The supplied SD Seals and Bearings logo is the visual reference for the brand. The site serves South Africa: use `sdseals.co.za`, `sales@sdseals.co.za`, and `R` prices.
+This document is the source of truth for future SD Seals UI work. Follow the existing brand and page structure unless the user explicitly asks for a change. When a screenshot or reference is supplied, match its typography, hierarchy, proportions, spacing, and content order; ignore reference colors when the user asks to preserve SD Seals colors.
 
-## Brand palette
+SD Seals is a South African industrial catalogue and supply business. The site should feel practical, precise, established, and service-led—not like a generic SaaS dashboard. Favor strong horizontal bands, clear product navigation, compact but comfortable spacing, high-contrast typography, squared edges, and real product imagery. Do not invent company claims, addresses, certifications, supplier marks, or contact details. Use `sdseals.co.za`, `sales@sdseals.co.za`, and `R` prices.
 
-- Primary navy `#012858` — site header, category navigation, CTA band, hero depth, and primary brand surfaces
-- Gold `#DFB843` — search actions, borders, indicators, highlights, and focus details
-- Pale gold `#F4D98A` — hover states and accessible focus rings
-- Graphite `#252B33` — body text and footer/service surfaces
-- Silver `#C8CDD2` — borders and secondary contrast
-- Mist `#F2F4F7` — light supporting backgrounds
-- White `#FFFFFF` — content surfaces and reversed type
+## Brand colors
 
-Keep the palette blue-led. Gold is an accent, not a replacement for the primary navy. Preserve the existing greys unless a contrast issue requires a change.
+Use these existing tokens and keep the design blue-led:
+
+- Primary navy `#012858`: main navigation, hero depth, primary actions, and brand surfaces.
+- Gold `#DFB843`: key accent, search/action highlights, short rules, selected states, and focus details.
+- Pale gold `#F4D98A`: subtle hover and focus surfaces.
+- Graphite `#252B33`: body text, masthead, footer, and secondary dark surfaces.
+- Silver `#C8CDD2`: borders and secondary contrast.
+- Mist `#F2F4F7`: page and section backgrounds.
+- White `#FFFFFF`: content panels and reversed text.
+
+Gold is an accent, never a substitute for navy. Keep the current colors consistent across routes; do not borrow orange/red colors from a reference unless explicitly requested. Use semantic CSS variables from `app/globals.css` and check contrast before using an accent for small text.
 
 ## Typography
 
-Use Montserrat from `app/globals.css`. Headings, navigation, buttons, eyebrows, and primary labels use a heavy italic industrial treatment:
+Use the existing Montserrat family from `app/globals.css`; do not add fonts without a clear need. Use a clear weight hierarchy:
 
-```css
-font-family: Montserrat, Arial, sans-serif;
-font-weight: 800; /* or 900 */
-font-style: italic;
-text-transform: uppercase;
-letter-spacing: 0.05em;
-```
+- Display headings, navigation, buttons, and short labels: heavy (800–900), italic, uppercase, slightly tracked.
+- Section headings: bold italic uppercase, sized below the page title, with a short gold underline only where the page design calls for one.
+- Body copy: sentence case, regular-to-medium weight, comfortable line height. Italic is appropriate for the About page/reference copy, but avoid making long paragraphs heavy, tightly tracked, or shouty.
+- Form labels and utility text: compact but legible; never rely on placeholders as the only accessible label.
 
-Body copy uses regular Montserrat with comfortable line height. Avoid playful, rounded, or decorative display styles. The About page hero has a single compact, left-aligned heavy italic uppercase heading with a short 4px gold underline immediately beneath it. On desktop, center hero content in an approximately 800px column and use an image-led hero about 330px tall with content vertically centered; use a compact 26px heading and sentence-case italic body copy at regular-to-medium weight. The introduction should use a generous content width (about 1040px) with a slightly wider text column beside its image. On mobile, preserve a roughly 310px-tall hero with comfortable left inset. The introduction section is plain copy beside a product image, without eyebrow labels or headings. Keep only the hero, introduction, and one centered CTA; do not add feature grids, value cards, logo strips, or decorative subheadings. Retain the brand navy/gold palette.
+Avoid rounded, playful, condensed, or decorative display fonts. Preserve natural sentence case in body copy even when nearby headings are uppercase.
 
-## Current page structure
+## Shared site shell
 
-The shared shell is rendered by `app/layout.tsx`:
+The shared shell lives in `app/layout.tsx`:
 
-1. `components/site-header.tsx` — utility links, logo masthead, search, basket, mobile menu, product navigation, and benefits bar
-2. Route content — `app/page.tsx`, `app/contact-us/page.tsx`, and `app/info/page.tsx`
-3. `components/site-footer.tsx` — service links, contact details, company statement, and legal footer
+1. `components/site-header.tsx`: utility links, logo masthead, search, basket, mobile actions, category navigation, and benefits bar.
+2. Route content under `app/`.
+3. `components/site-footer.tsx`: service links, contact details, company statement, and legal footer.
 
-The home/about route mirrors the requested reference structure: a compact image-backed hero with one left-aligned heading and short italic introduction, a two-column body-copy-and-image section with no added subheadings, then one navy enquiry CTA. Avoid adding feature grids, value-card sections, logo strips, or extra headings unless requested. The contact route uses a single white panel on the mist background, with a two-column form/details layout on desktop and a stacked layout on mobile; use short gold underlines, clear form labels, a privacy note, and keep the shared navy/gold palette.
+Keep the header and footer consistent across routes. The desktop header uses the existing dark masthead, navy category bar, and graphite benefits row with gold reserved for the search/action accent. On mobile, preserve this action order: SD Seals logo, unrotated phone-call icon, basket, menu toggle, then full-width search. Do not rotate the phone icon or introduce a second mobile header treatment. Keep category and service messaging in strong horizontal bands; make menus keyboard-operable and prevent horizontal overflow.
 
-## File structure and consistency
+## Page patterns
 
-- Route-specific UI belongs in `app/<route>/page.tsx`.
-- Shared site chrome belongs in `components/` and is imported by `app/layout.tsx`.
-- Shared navigation, contact, category, and benefit data belongs in `lib/site-data.ts`; do not duplicate these strings across components.
-- Global tokens, typography, layout utilities, and reusable visual classes belong in `app/globals.css`.
-- Keep content and layout separate from global styling. Add a component when a section becomes reusable or has its own interaction/state.
-- Use `@/` imports for project-local modules.
-- Keep browser state in the smallest interactive component; do not make route pages client components unless required.
+### Home / About (`app/page.tsx`)
 
-## Layout rules
+Keep the page deliberately simple and close to the supplied reference:
 
-Use a 1180px maximum content width, 40px total desktop gutters, and 20px mobile gutters. On mobile, the header uses the SD Seals logo, an unrotated phone-call icon, basket, menu toggle, and full-width search in that order. Use flexbox for navigation and footer rows, and grid for two- and three-column content sections. Keep vertical spacing compact and intentional: approximately 42px hero padding, 55–72px content sections, and 62px CTA padding.
+1. Image-led hero with one left-aligned page heading, a short gold underline, and a concise italic introduction. Vertically center the copy in the image area. Target about 330px hero height on desktop and 310px on mobile, adjusting when content or viewport requires it. Keep the heading compact and the body copy lighter than the heading.
+2. Plain text-and-image introduction. Use a generous width (about 1040px), with a slightly wider text column beside one relevant product image. Do not add eyebrow labels or subheadings to this section.
+3. One centered enquiry CTA using navy/gold tokens.
 
-## Component rules
+Do not add feature grids, value-card sections, duplicate hero claims, unnecessary headings, decorative logo strips, or made-up supplier logos unless explicitly requested. Prefer real supplied product assets over placeholders.
 
-Buttons are uppercase, heavy italic, and compact. Hero enquiry actions use graphite with white text and shift to gold with navy text on hover; CTA enquiry actions use gold and shift to pale gold on hover. Every button link must have a visible hover, focus, and keyboard state. Navigation and service messaging use full-width bars. Keep cards and rounded UI to a minimum: this is an industrial catalogue aesthetic rather than a SaaS dashboard.
+### Contact (`app/contact-us/page.tsx`)
 
-## Accessibility
+Use one white contact panel on the mist background. On desktop, place the enquiry form and contact details in two aligned columns; on narrow screens, stack them with the form first. Start both columns with clear headings and short gold underline accents. Keep the form easy to scan: paired fields on desktop, full-width fields on mobile, a clearly sized message area, a concise privacy note, and one prominent action. Keep the contact details factual and readable, with phone and email links.
 
-Use semantic landmarks, labelled search controls, descriptive logo alt text, visible keyboard focus rings, sufficient color contrast, and a mobile navigation button with `aria-expanded`. Preserve keyboard access for every interactive element and avoid text-only color cues.
+Use real, labelled inputs and native validation. Do not add a fake CAPTCHA or display a “sent” state unless an actual delivery endpoint confirms success. The current form opens a prefilled email in the visitor’s email app; state that behavior honestly. If the user later requests direct website delivery, use a real server-side mail integration rather than pretending a client-only form sends mail. Do not add supplier/payment logos from a reference without approved local assets.
+
+### Other routes
+
+For catalog, category, product, or information pages, reuse the shared shell and palette. Put the main task and page title first, use real product information/images, and add only sections that support the route’s purpose. Keep product browsing and contact actions obvious. Do not create filler content or repeated marketing sections to make a page longer.
+
+## Layout and responsive behavior
+
+- Use a centered content width up to 1180px with 40px total desktop gutters and 20px mobile gutters. Page-specific content may be narrower when that matches the reference; long paragraphs must not be constrained so tightly that they wrap awkwardly.
+- Use flexbox for one-dimensional rows and navigation; use CSS grid for intentional multi-column layouts. Collapse columns cleanly on small screens and preserve a sensible content order.
+- Let images retain useful proportions with `object-fit: cover` only when cropping is intentional; set a purposeful focal position for cropped product imagery.
+- Keep spacing consistent and purposeful. Avoid large blank areas, compressed form fields, overly tall headers, or hero text stranded at the top of a tall image.
+- Use minimal corner rounding and restrained borders/shadows. This is an industrial catalogue, not a card-heavy application.
+
+## Components and interaction
+
+Buttons are compact, uppercase, heavy italic, and use the existing button variants. Gold actions use navy text; dark actions use white text. Provide clear hover, active, disabled, and keyboard-focus states without shifting layout. Links should look and behave like links. Search, basket, menus, and forms must be real controls—not decorative mockups.
+
+Use shared data from `lib/site-data.ts` for navigation, categories, benefits, contact information, and other repeated site content. Do not duplicate or invent contact strings in route components. Keep route-specific UI in `app/<route>/page.tsx`, shared UI in `components/`, and global tokens/typography/reusable classes in `app/globals.css`. Add a component when it is reusable or owns meaningful state. Use `@/` imports. Keep client components as small as possible; do not mark a whole route client-side without a functional reason.
+
+## Accessibility and content integrity
+
+Use semantic landmarks and a logical heading hierarchy. Label every input independently of its placeholder; provide useful alt text for meaningful images and empty alt text for decorative ones. Keep all controls keyboard accessible, expose menu state with `aria-expanded`, use visible focus indicators, and never communicate state by color alone. Respect reduced-motion preferences for nonessential animation. Preserve readable contrast and touch targets at mobile sizes.
+
+Never claim a form was delivered unless the server confirms it. Never simulate CAPTCHA, certifications, payment brands, testimonials, supplier logos, or legal assurances. Use only verified content and assets already in the project or explicitly provided by the user.

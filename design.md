@@ -28,7 +28,7 @@ text-transform: uppercase;
 letter-spacing: 0.05em;
 ```
 
-Body copy uses regular Montserrat with comfortable line height. Avoid playful, rounded, or decorative display styles. Section headings use the same heavy italic uppercase treatment and include a short 4px underline accent; use navy on light surfaces, gold on navy surfaces, and keep the accent aligned to the heading.
+Body copy uses regular Montserrat with comfortable line height. Avoid playful, rounded, or decorative display styles. The About page hero has a single compact, left-aligned heavy italic uppercase heading with a short 4px gold underline immediately beneath it. On desktop, center hero content in an approximately 800px column and keep the hero shallow (about 165px tall); use a compact 26px heading and smaller sentence-case italic body copy. On mobile, preserve a roughly 270px image-led hero with comfortable left inset. The introduction section is plain copy beside a product image, without eyebrow labels or headings. Keep only the hero, introduction, and one centered CTA; do not add feature grids, value cards, logo strips, or decorative subheadings. Retain the brand navy/gold palette.
 
 ## Current page structure
 
@@ -38,7 +38,7 @@ The shared shell is rendered by `app/layout.tsx`:
 2. Route content — `app/page.tsx`, `app/contact-us/page.tsx`, and `app/info/page.tsx`
 3. `components/site-footer.tsx` — service links, contact details, company statement, and legal footer
 
-The home/about route currently contains: image-led hero, about introduction, feature strip, three-value grid, navy enquiry CTA, and supplier/trust strip.
+The home/about route mirrors the requested reference structure: a compact image-backed hero with one left-aligned heading and short italic introduction, a two-column body-copy-and-image section with no added subheadings, then one navy enquiry CTA. Avoid adding feature grids, value-card sections, logo strips, or extra headings unless requested.
 
 ## File structure and consistency
 

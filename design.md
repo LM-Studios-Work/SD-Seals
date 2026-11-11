@@ -4,7 +4,7 @@
 
 This document is the source of truth for future SD Seals UI work. Follow the existing brand and page structure unless the user explicitly asks for a change. When a screenshot or reference is supplied, match its typography, hierarchy, proportions, spacing, and content order; ignore reference colors when the user asks to preserve SD Seals colors.
 
-SD Seals is a South African industrial catalogue and supply business. The site should feel practical, precise, established, and service-led—not like a generic SaaS dashboard. Favor strong horizontal bands, clear product navigation, compact but comfortable spacing, high-contrast typography, squared edges, and real product imagery. Do not invent company claims, addresses, certifications, supplier marks, or contact details. Use `sdseals.co.za`, `sales@sdseals.co.za`, and `R` prices.
+SD Seals is a South African industrial catalogue and supply business. The site should feel practical, precise, established, and service-led—not like a generic SaaS dashboard. Favor strong horizontal bands, clear product navigation, compact but comfortable spacing, high-contrast typography, squared edges, and real product imagery. Do not invent company claims, addresses, certifications, supplier marks, or contact details. Use `sdseals.co.za`, `info@sdseals.co.za`, and `R` prices.
 
 ## Brand colors
 
@@ -35,29 +35,39 @@ Avoid rounded, playful, condensed, or decorative display fonts. Preserve natural
 
 The shared shell lives in `app/layout.tsx`:
 
-1. `components/site-header.tsx`: utility links, logo masthead, search, basket, mobile actions, category navigation, and benefits bar.
+1. `components/site-header.tsx`: utility links, logo masthead, search, mobile actions, category navigation, and benefits bar.
 2. Route content under `app/`.
-3. `components/site-footer.tsx`: service links, contact details, company statement, and legal footer.
+3. `components/site-footer.tsx`: service links, contact details, operating hours (Monday to Friday 8:00 AM – 4:30 PM; Saturday & Sunday Closed), company statement, and legal footer.
 
-Keep the header and footer consistent across routes. Treat the supplied references as three responsive compositions, not one layout scaled down. Preserve SD Seals navy/gold/graphite/white; do not copy the reference brand's orange. The desktop search action uses gold with navy text for readable contrast.
+Keep the header and footer consistent across routes. Treat the supplied references as three responsive compositions with a uniform industrial diagonal language, not one layout scaled down. Preserve SD Seals navy/gold/graphite/white; do not copy the reference brand's orange. The search action uses gold with navy text for readable contrast, and search elements share a uniform parallel slant angle (~15 degrees) across desktop, tablet, and mobile. SD Seals operates on a catalogue and trade enquiry model (no online checkout cart).
 
-- Laptop / wide desktop (1100px and wider): keep the utility links at the top, then a spacious single-row masthead with logo, wide search, and basket/total. Follow it with the full navy product-category bar and graphite service-benefits bar. Maintain the existing 1180px content width and balanced alignment; do not add mobile controls or diagonal decoration here.
-- iPad / tablet (760–1099px): keep a compact utility row, but suppress the phone and email details if they crowd it. Use one aligned masthead row for the uncropped logo, a usable search field, and basket/total. Put a full-width gold MENU bar directly below that row, with navy text and icon; collapse the category and benefits bars into the accessible menu. Leave an intentional 16–20px navy breathing space after the compact header/menu before page content. This is a deliberate tablet composition, not a squeezed desktop header.
-- Phone (up to 759px): hide the utility row and benefits bar. Use one compact navy top row in this order: logo, phone, basket, menu; use three equal charcoal icon tiles with small, consistent diagonal cuts and navy gutters. Put the white search field and gold action on the next row, then leave 16–20px of navy space below the search before the page begins. Keep the logo uncropped, icon targets comfortable, and the search button wide enough for its label.
+- Laptop / wide desktop (1100px and wider): utility links at the top with clean divider pipes and comfortable spacing (About us and Contact us on the left; Trade Account, phone, and email shifted to the right side; login/register removed). Masthead row features the uncropped logo on the left and a generous, cleanly integrated slanted search bar (white input and gold SEARCH button with a 3px parallel slanted seam) extending smoothly to the right margin with balanced alignment and no awkward empty voids. Follow it with the full navy product-category bar (gold hover accent) and graphite service-benefits bar. Maintain the 1180px content width and balanced alignment.
+- iPad / tablet (760–1099px): compact utility row suppressing email and phone to avoid crowding. Masthead row includes the uncropped logo and the full-width slanted search field. Directly below that row, a full-width gold MENU bar with navy text and icon collapses the category and benefits bars into the accessible drawer menu. Leave an intentional 16–20px navy breathing space after the header before page content.
+- Phone (up to 759px): hide the utility row and benefits bar. Row 1 features the uncropped logo on the left and two equal charcoal slanted icon tiles on the right: phone icon (where the cart was, beside menu) and menu toggle. Each tile has a parallel ~15-degree slant cut with clean 3px navy seams between them. Row 2 features the full-width slanted search bar (white input, 3px slanted seam, gold SEARCH button with matching slant on both edges). Leave an intentional 16–20px navy breathing space below the search bar before page content begins.
 
-The mobile/tablet menu opens as a full-height white panel with a gold top bar, high-contrast navy MENU/close controls, ruled product rows, and a clearly separate secondary-links/login group. Use chevrons only for categories with real child links; the supplied Fluid Power submenu may show View all Fluid Power, Pneumatics, and Hose & Tubing. Every diagonal must belong to a repeated, aligned panel edge or the search-button edge: never add an isolated slash, skewed border, or pseudo-element beside the logo. Keep product hierarchy clear, allow Escape to close, expose `aria-expanded`, preserve keyboard access, and prevent horizontal overflow.
+The mobile/tablet menu opens as a full-height white panel with a gold top bar, high-contrast navy MENU/close controls, ruled product rows, and a secondary-links group (About us, Contact us, Trade accounts). Use chevrons only for categories with real child links; the supplied Fluid Power submenu may show View all Fluid Power, Pneumatics, and Hose & Tubing. Every diagonal belongs to a repeated, aligned panel edge or the search/button edge with a uniform slant angle. Keep product hierarchy clear, allow Escape to close, expose `aria-expanded`, preserve keyboard access, and prevent horizontal overflow.
 
 ## Page patterns
 
-### Home / About (`app/page.tsx`)
+### Home (`app/page.tsx`)
 
-Keep the page deliberately simple and close to the supplied reference:
+The home page structure directly mirrors the user-supplied reference:
 
-1. Image-led hero with one left-aligned page heading, a short gold underline, and a concise italic introduction. Vertically center the copy in the image area. Target about 330px hero height on desktop and 310px on mobile, adjusting when content or viewport requires it. Keep the heading compact and the body copy lighter than the heading.
-2. Plain text-and-image introduction. Use a generous width (about 1040px), with a slightly wider text column beside one relevant product image. Do not add eyebrow labels or subheadings to this section.
-3. One centered enquiry CTA using navy/gold tokens.
-
-Do not add feature grids, value-card sections, duplicate hero claims, unnecessary headings, decorative logo strips, or made-up supplier logos unless explicitly requested. Prefer real supplied product assets over placeholders.
+1. **Compact Hero Slideshow**: An image slider (~380px on desktop, ~320px on mobile) with bold italic headline, slanted CTA button, and the **Google rating (5.0 ★★★★★)** placed underneath with comfortable spacing. The slideshow auto-rotates smoothly, supports touch swipe on mobile, and has desktop navigation arrows.
+2. **Popular Categories (2x2 Grid)**: 4 blocked cards in a 2x2 grid using the user-provided images from `public/Homepage`:
+   - `Wheel Bearings & Hub Assemblies` (`/Homepage/Wheel Bearings & Hub Assemblies.jpg`)
+   - `Engine & Drivetrain Oil Seals` (`/Homepage/Engine & Drivetrain Oil Seals.jpg`)
+   - `Transmission & Ancillary Bearings` (`/Homepage/Transmission & Ancillary Bearings.webp`)
+   - `Sizing, Matching & O-Rings` (`/Homepage/Sizing, Matching & O-Rings.jpg`)
+   Each card features a solid navy title bar that transitions to gold on hover with smooth image zoom.
+3. **Three-in-a-Row Feature Cards (`components/feature-cards.tsx`)**: Directly below categories, three cards side-by-side in one row (matching the reference):
+   - **Trade Accounts**: Angled gold `TRADE ACCOUNTS` ribbon, copy (*Sign up to a Trade Account today...*), and `REGISTER NOW` link.
+   - **Who We Are**: Angled gold `WHO WE ARE` ribbon with user-specified image (`/Homepage/about-main-300x424-1.jpeg`), copy (*SD Seals is an independent company...*), and `LEARN ABOUT US` link.
+   - **Bespoke Solutions**: Angled gold `BESPOKE SOLUTIONS` ribbon with user-specified image (`/Homepage/bearing bespoke.jpg`), copy (*Trying to source a non-standard bearing?...*), and `SEND AN ENQUIRY` link.
+4. **Seal & Bearing Suppliers + Make an Enquiry Split Section (`components/enquiry-callback.tsx`)**: Prominent full-width split section placed directly above the footer (matching the reference layout):
+   - **Left Column (White background)**: `SEAL & BEARING SUPPLIERS YOU CAN TRUST` title with a short dark underline divider, followed by three detailed paragraphs covering 50+ years of industrial experience, comprehensive bearing and seal product ranges (rotary shaft seals, hydraulic packings, deep groove, spherical, cylindrical, needle, etc.), and bespoke taper roller / multi-row assembly capabilities.
+   - **Right Column (Slanted Navy Panel)**: Industrial diagonal panel slanting forward (`clip-path: polygon(72px 0, 100% 0, 100% 100%, 0 100%)`) in SD Seals navy (`#012858`) with subtle workshop depth, bleeding seamlessly to the right viewport edge. Features `MAKE AN ENQUIRY` with a gold underline, advisory intro copy, two clean white text inputs (`Enter your name...`, `Enter your telephone...`), and a slanted charcoal `REQUEST A CALLBACK` button routing to `/contact-us` with pre-filled parameters.
+   - **Mobile Layout**: Neatly stacks on screens under 960px, presenting the supplier trust text on white followed by the full-bleed navy callback card.
 
 ### Contact (`app/contact-us/page.tsx`)
 
@@ -79,7 +89,7 @@ For catalog, category, product, or information pages, reuse the shared shell and
 
 ## Components and interaction
 
-Buttons are compact, uppercase, heavy italic, and use the existing button variants. Gold actions use navy text; dark actions use white text. Provide clear hover, active, disabled, and keyboard-focus states without shifting layout. Links should look and behave like links. Search, basket, menus, and forms must be real controls—not decorative mockups.
+Buttons are compact, uppercase, heavy italic, and use the existing button variants. Gold actions use navy text; dark actions use white text. Provide clear hover, active, disabled, and keyboard-focus states without shifting layout. Links should look and behave like links. Search, menus, and forms must be real controls—not decorative mockups.
 
 Use shared data from `lib/site-data.ts` for navigation, categories, benefits, contact information, and other repeated site content. Do not duplicate or invent contact strings in route components. Keep route-specific UI in `app/<route>/page.tsx`, shared UI in `components/`, and global tokens/typography/reusable classes in `app/globals.css`. Add a component when it is reusable or owns meaningful state. Use `@/` imports. Keep client components as small as possible; do not mark a whole route client-side without a functional reason.
 

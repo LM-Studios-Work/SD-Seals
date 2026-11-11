@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { BadgeCheck, ChevronDown, Coins, Globe, Menu, PhoneCall, Search, Settings, ShoppingBag, X } from "lucide-react"
+import { BadgeCheck, ChevronDown, Coins, Globe, Menu, PhoneCall, Settings, X } from "lucide-react"
 import { primaryLinks, productCategories, serviceBenefits, siteContact } from "@/lib/site-data"
 
 const mobileSubcategories: Record<string, string[]> = {
@@ -24,17 +24,18 @@ export function SiteHeader() {
         <div className="container utility-inner">
           <div className="utility-primary">
             {primaryLinks.slice(0, 2).map((link, index) => (
-              <span key={link.href}>
+              <span key={link.href} className="utility-item">
                 {index > 0 && <span className="utility-divider" aria-hidden="true">|</span>}
                 <Link href={link.href}>{link.label}</Link>
               </span>
             ))}
           </div>
           <div className="utility-secondary">
+            <Link href="/info">Trade Account</Link>
+            <span className="utility-divider utility-contact" aria-hidden="true">|</span>
             <a className="utility-contact" href={siteContact.phoneHref}>{siteContact.phone}</a>
+            <span className="utility-divider utility-contact" aria-hidden="true">|</span>
             <a className="utility-contact" href={`mailto:${siteContact.email}`}>{siteContact.email}</a>
-            <span>Login / Register</span>
-            <span>Trade Account</span>
           </div>
         </div>
       </div>
@@ -43,18 +44,13 @@ export function SiteHeader() {
         <Link href="/" className="brand" aria-label="SD Seals home">
           <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-2b6P9OzfLTmljZO9hwL6DOcEs0kXDF.jpeg" alt="SD Seals and Bearings" />
         </Link>
-        <form className="search-form" role="search">
+        <form className="search-form" role="search" onSubmit={(e) => e.preventDefault()}>
           <label className="sr-only" htmlFor="site-search">Search products</label>
-          <input id="site-search" placeholder="Search" />
-          <button type="submit">Search <Search aria-hidden="true" /></button>
+          <input id="site-search" type="search" placeholder="Search" />
+          <button type="submit">SEARCH</button>
         </form>
         <div className="mobile-actions">
           <a className="mobile-phone" href={siteContact.phoneHref} aria-label="Call SD Seals"><PhoneCall aria-hidden="true" /></a>
-          <div className="cart-area">
-            <strong>R0.00</strong>
-            <ShoppingBag aria-hidden="true" />
-            <span className="cart-count">0</span>
-          </div>
           <button className="menu-toggle" aria-controls="mobile-category-navigation" aria-expanded={open} onClick={() => setOpen((value) => !value)} aria-label={open ? "Close navigation" : "Open navigation"}>
             {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
             <span className="menu-toggle-label">{open ? "Close" : "Menu"}</span>
@@ -94,7 +90,6 @@ export function SiteHeader() {
             {primaryLinks.filter((link) => link.label !== "Info").map((link) => <Link href={link.href} key={link.href} onClick={closeMenu}>{link.label}</Link>)}
             <Link href="/info" onClick={closeMenu}>Trade accounts</Link>
           </div>
-          <Link className="mobile-login" href="/contact-us" onClick={closeMenu}>Log in</Link>
         </div>
       </nav>
 

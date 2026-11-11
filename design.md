@@ -38,7 +38,7 @@ The shared shell is rendered by `app/layout.tsx`:
 2. Route content — `app/page.tsx`, `app/contact-us/page.tsx`, and `app/info/page.tsx`
 3. `components/site-footer.tsx` — service links, contact details, company statement, and legal footer
 
-The home/about route mirrors the requested reference structure: a compact image-backed hero with one left-aligned heading and short italic introduction, a two-column body-copy-and-image section with no added subheadings, then one navy enquiry CTA. Avoid adding feature grids, value-card sections, logo strips, or extra headings unless requested.
+The home/about route mirrors the requested reference structure: a compact image-backed hero with one left-aligned heading and short italic introduction, a two-column body-copy-and-image section with no added subheadings, then one navy enquiry CTA. Avoid adding feature grids, value-card sections, logo strips, or extra headings unless requested. The contact route uses a single white panel on the mist background, with a two-column form/details layout on desktop and a stacked layout on mobile; use short gold underlines, clear form labels, a privacy note, and keep the shared navy/gold palette.
 
 ## File structure and consistency
 

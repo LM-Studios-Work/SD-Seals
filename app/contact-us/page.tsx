@@ -1,29 +1,55 @@
 "use client"
 
-import { FormEvent, useState } from "react"
+import type { FormEvent } from "react"
+import Link from "next/link"
 import { Mail, MapPin, Phone } from "lucide-react"
 import { siteContact } from "@/lib/site-data"
 
 export default function ContactPage() {
-  const [sent, setSent] = useState(false)
-
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    setSent(true)
+    const data = new FormData(event.currentTarget)
+    const subject = encodeURIComponent(`Website enquiry from ${data.get("name")}`)
+    const body = encodeURIComponent([
+      `Name: ${data.get("name")}`,
+      `Telephone: ${data.get("telephone")}`,
+      `Email: ${data.get("email")}`,
+      `Company: ${data.get("company") || "Not provided"}`,
+      "",
+      `Enquiry: ${data.get("message")}`,
+    ].join("\n"))
+    window.location.href = `mailto:${siteContact.email}?subject=${subject}&body=${body}`
   }
 
   return <main className="contact-page">
-    <section className="contact-content"><div className="container contact-grid">
-      <div className="contact-form-wrap"><p className="eyebrow">Make an enquiry</p><h2>How can we help?</h2><p className="contact-intro">Send us a message using the form below and one of our team will be in touch.</p>
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-row"><label>Name<input name="name" required placeholder="Your name" /></label><label>Telephone<input name="telephone" type="tel" required placeholder="Your telephone" /></label></div>
-          <div className="form-row"><label>Email<input name="email" type="email" required placeholder="Your email" /></label><label>Company<input name="company" placeholder="Company name" /></label></div>
-          <label>Enquiry<textarea name="message" required placeholder="Tell us about your enquiry" rows={6} /></label>
-          <button className="button button-primary" type="submit">Send enquiry</button>
-          {sent && <p className="form-success" role="status">Thanks — your enquiry has been noted. We&apos;ll be in touch shortly.</p>}
-        </form>
+    <section className="contact-content" aria-label="Contact SD Seals">
+      <div className="container contact-grid">
+        <div className="contact-form-wrap">
+          <h1>Contact us</h1>
+          <p className="contact-intro">Send us a message using the form below and one of our team will get back to you.</p>
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-row">
+              <label>Name<input autoComplete="name" name="name" required placeholder="Your name" /></label>
+              <label>Telephone<input autoComplete="tel" name="telephone" type="tel" required placeholder="Your telephone" /></label>
+            </div>
+            <div className="form-row">
+              <label>Email<input autoComplete="email" name="email" type="email" required placeholder="Your email" /></label>
+              <label>Company<input autoComplete="organization" name="company" placeholder="Company name" /></label>
+            </div>
+            <label>Enquiry<textarea name="message" required placeholder="Some brief details about your enquiry..." rows={5} /></label>
+            <p className="privacy-note">Your information is important to us. Please see our <Link href="/info">privacy policy</Link>. Sending this form opens your email app.</p>
+            <button className="button button-primary" type="submit">Send enquiry</button>
+          </form>
+        </div>
+        <aside className="contact-details">
+          <h2>Contact details</h2>
+          <div className="detail-list">
+            <div><MapPin aria-hidden="true" /><span><strong>Head office</strong><span>South Africa<br />Industrial supply, nationwide</span></span></div>
+            <div><Phone aria-hidden="true" /><span><strong>Telephone</strong><a href={siteContact.phoneHref}>{siteContact.phone}</a></span></div>
+            <div><Mail aria-hidden="true" /><span><strong>Email</strong><a href={`mailto:${siteContact.email}`}>{siteContact.email}</a></span></div>
+          </div>
+        </aside>
       </div>
-      <aside className="contact-details"><p className="eyebrow">Contact details</p><h2>Speak to the team.</h2><div className="detail-list"><div><Phone aria-hidden="true" /><span><strong>Phone</strong><a href={siteContact.phoneHref}>{siteContact.phone}</a></span></div><div><Mail aria-hidden="true" /><span><strong>Email</strong><a href={`mailto:${siteContact.email}`}>{siteContact.email}</a></span></div><div><MapPin aria-hidden="true" /><span><strong>Head office</strong><span>South Africa<br />Industrial supply, nationwide</span></span></div></div></aside>
-    </div></section>
+    </section>
   </main>
 }

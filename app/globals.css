@@ -1041,15 +1041,17 @@ button, input, textarea {
   background: var(--white);
   border: 1px solid #dde1e6;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
-  max-width: 420px;
+  max-width: 380px;
   overflow: hidden;
   width: 100%;
 }
 
 .about-bearing-img {
   display: block;
-  height: auto;
+  height: 380px;
+  max-height: 380px;
   object-fit: cover;
+  object-position: center;
   width: 100%;
 }
 
@@ -1098,7 +1100,7 @@ button, input, textarea {
 .about-help-cta {
   align-self: center;
   background: var(--charcoal);
-  border: 1px solid rgba(223, 184, 67, 0.6);
+  border: 0;
   border-radius: 0;
   clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
   color: var(--white);
@@ -1117,7 +1119,6 @@ button, input, textarea {
 
 .about-help-cta:hover {
   background: var(--gold);
-  border-color: var(--gold);
   color: var(--navy);
   transform: translateY(-2px);
 }
@@ -2078,6 +2079,10 @@ button, input, textarea {
   }
   .about-image-card {
     max-width: 100%;
+  }
+  .about-bearing-img {
+    height: 280px;
+    max-height: 280px;
   }
   .about-help-banner {
     padding: 48px 0 52px;

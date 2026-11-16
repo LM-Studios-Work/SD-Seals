@@ -6,6 +6,11 @@ import { SiteFooter } from "@/components/site-footer"
 export const metadata: Metadata = {
   title: "SD Seals | Seals & Bearings",
   description: "Precision seals, bearings and industrial components from SD Seals.",
+  icons: {
+    icon: "/sdsealsfavicon.png",
+    shortcut: "/sdsealsfavicon.png",
+    apple: "/sdsealsfavicon.png",
+  },
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

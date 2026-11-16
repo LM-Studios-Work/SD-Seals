@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { useCallback, useEffect, useRef, useState } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 
 export interface SlideData {
   id: string
@@ -221,23 +220,7 @@ export function HeroSlideshow({ slides = DEFAULT_SLIDES }: { slides?: SlideData[
         </div>
       </div>
 
-      {/* Nav Arrows */}
-      <button
-        type="button"
-        className="hero-nav-arrow hero-nav-prev"
-        onClick={prevSlide}
-        aria-label="Previous slide"
-      >
-        <ChevronLeft aria-hidden="true" />
-      </button>
-      <button
-        type="button"
-        className="hero-nav-arrow hero-nav-next"
-        onClick={nextSlide}
-        aria-label="Next slide"
-      >
-        <ChevronRight aria-hidden="true" />
-      </button>
+      {/* Nav Arrows removed */}
     </section>
   )
 }

@@ -31,8 +31,6 @@ export function SiteHeader() {
             ))}
           </div>
           <div className="utility-secondary">
-            <Link href="/info">Trade Account</Link>
-            <span className="utility-divider utility-contact" aria-hidden="true">|</span>
             <a className="utility-contact" href={siteContact.phoneHref}>{siteContact.phone}</a>
             <span className="utility-divider utility-contact" aria-hidden="true">|</span>
             <a className="utility-contact" href={`mailto:${siteContact.email}`}>{siteContact.email}</a>
@@ -42,7 +40,7 @@ export function SiteHeader() {
 
       <div className="masthead container">
         <Link href="/" className="brand" aria-label="SD Seals home">
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-2b6P9OzfLTmljZO9hwL6DOcEs0kXDF.jpeg" alt="SD Seals and Bearings" />
+          <img src="/SD-Seals-Bearings%20Logo.png" alt="SD Seals and Bearings" />
         </Link>
         <form className="search-form" role="search" onSubmit={(e) => e.preventDefault()}>
           <label className="sr-only" htmlFor="site-search">Search products</label>
@@ -88,7 +86,6 @@ export function SiteHeader() {
           </div>
           <div className="mobile-links">
             {primaryLinks.filter((link) => link.label !== "Info").map((link) => <Link href={link.href} key={link.href} onClick={closeMenu}>{link.label}</Link>)}
-            <Link href="/info" onClick={closeMenu}>Trade accounts</Link>
           </div>
         </div>
       </nav>
